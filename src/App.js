@@ -4,6 +4,7 @@ import BoardInspector from './components/BoardInspector.js';
 import Board from './Board.js';
 import data from './data.json';
 import './bootstrap.min.css';
+import './app.css';
 
 export default function App() {
     const [isGameVisible, toggleGameVisible] = useState(false);
@@ -26,7 +27,7 @@ export default function App() {
                     ) : (
                         <BoardSuspect data={cases.get(selectedCase)} idPlayer={idPlayer} isDetective={isDetective}/>
                     )}
-                    <input type="button" className="btn btn-dark" onClick={() => toggleGameVisible(false)}
+                    <input id='end-button' type="button" className="btn btn-dark" onClick={() => toggleGameVisible(false)}
                            value="Terminer la partie"/>
                 </Board>
             ) : (
@@ -43,11 +44,11 @@ export default function App() {
                                onChange={handleChange}/>
                     </div>
                     <div>Affaire selectionnée</div>
-                    <select className="form-select" name="case" value={selectedCase}
+                    <select id='caseId' className="form-select" name="case" value={selectedCase}
                             onChange={(e => setSelectedCase(e.target.value))}>
                         {[...cases.keys()].map(e => <option value={e}>{e}</option>)}
                     </select>
-                    <input type="button" className="btn btn-success" onClick={() => toggleGameVisible(true)}
+                    <input id='start-button' type="button" className="btn btn-success" onClick={() => toggleGameVisible(true)}
                            value="Commencer la partie"/>
                 </form>
             )}
